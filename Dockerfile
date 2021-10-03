@@ -1,6 +1,5 @@
 FROM alpine
-LABEL maintainer "erscl"
-
+LABEL maintainer "marineotter"
 
 RUN set -x && \
 	apk upgrade --update && \
@@ -8,4 +7,5 @@ RUN set -x && \
 	cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
 	apk del tzdata && \
 	rm -rf /var/cache/apk/*
-CMD ["/bin/bash"]
+
+CMD ["/usr/bin/lftp"]
