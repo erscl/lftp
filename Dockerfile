@@ -3,7 +3,7 @@ LABEL maintainer "marineotter"
 
 RUN set -x && \
 	apk upgrade --update && \
-	apk add tzdata bash lftp git && \
+	apk add tzdata bash lftp git openssh && \
 	cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
 	apk del tzdata && \
 	rm -rf /var/cache/apk/*
