@@ -1,11 +1,9 @@
-FROM alpine
+FROM debian:trixie-slim
 LABEL maintainer "marineotter"
 
-RUN set -x && \
-	apk upgrade --update && \
-	apk add tzdata bash lftp git openssh && \
-	cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-	apk del tzdata && \
-	rm -rf /var/cache/apk/*
+RUN apt-get update && apt-get install -y \
+    lftp git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/bin/lftp"]
